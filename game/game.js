@@ -34,9 +34,10 @@ function Game(id) {
 
     // Determine the outcome of a turn
     if (player1ActionIsValid && player2ActionIsValid) {
-        // Each player takes an action
-        player1[action1]();
-        player2[action2]();
+      // Each player takes an action
+      player1[action1]();
+      player2[action2]();
+      
       // If player 1 launches nukes
       // And player 2 doesn't launch countermeasures or they are not effective,
       // player 2 loses as many cities as nukes were launched by player 1
