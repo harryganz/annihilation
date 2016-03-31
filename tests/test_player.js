@@ -96,5 +96,16 @@ describe('Player constructor', function(){
     it('should decrement numCities by 1', function(){
       player.numCities.should.be.exactly(4);
     });
-  }); 
+  });
+
+  describe('hasLost function', function(){
+    it('should return false if player has > 0 cities', function(){
+      player.hasLost().should.be.false();
+    });
+
+    it('should return true if player has 0 cities', function(){
+      player.numCities = 0;
+      player.hasLost().should.be.true();
+    });
+  });
 });
