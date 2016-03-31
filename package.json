@@ -1,0 +1,32 @@
+{
+  "name": "annihilation",
+  "version": "0.0.1",
+  "description": "A browser game of nuclear annihilation",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "jshintConfig": {
+    "node": true,
+    "esversion": 6
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha tests/**/*.js",
+    "test-w": "mocha tests/**/*.js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harryganz/annihilation.git"
+  },
+  "author": "Harry Ganz <hganz@harryganz.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harryganz/annihilation/issues"
+  },
+  "homepage": "https://github.com/harryganz/annihilation#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.3.0"
+  }
+}
