@@ -46,8 +46,8 @@ describe('Player constructor', function(){
       player.launch();
     });
 
-    it('should launch all a players nukes', function(){
+    it('should set numNukes to 0', function(){
       player.numNukes.should.be.exactly(0);
-    }); 
+    });
   });
 });
