@@ -28,7 +28,9 @@ function Player(alias) {
     this.numCities--;
   };
 
-
+  this.hasLost = function() {
+    return this.numCities <= 0;
+  };
 }
 
 module.exports = Player;
