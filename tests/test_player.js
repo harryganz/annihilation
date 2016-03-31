@@ -70,4 +70,20 @@ describe('Player constructor', function(){
       player.countermeasureEffectiveness.should.be.exactly(1);
     });
   });
+
+  describe('deployCountermeasures function', function(){
+    beforeEach(function() {
+      player.hasUsedCountermeasures = false;
+      player.countermeasureEffectiveness = 1;
+      player.deployCountermeasures();
+    });
+
+    it('should set hasUsedCountermeasures to true', function(){
+      player.hasUsedCountermeasures.should.be.true();
+    });
+
+    it('should halve countermeasureEffectiveness', function(){
+      player.countermeasureEffectiveness.should.be.exactly(0.5);
+    });  
+  });
 });
