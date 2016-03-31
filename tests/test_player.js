@@ -84,6 +84,17 @@ describe('Player constructor', function(){
 
     it('should halve countermeasureEffectiveness', function(){
       player.countermeasureEffectiveness.should.be.exactly(0.5);
-    });  
+    });
   });
+
+  describe('destroyCity function', function(){
+    beforeEach(function() {
+      player.numCities = 5;
+      player.destroyCity();
+    });
+
+    it('should decrement numCities by 1', function(){
+      player.numCities.should.be.exactly(4);
+    });
+  }); 
 });

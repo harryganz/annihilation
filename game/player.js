@@ -24,6 +24,10 @@ function Player(alias) {
     this.countermeasureEffectiveness *= 0.5;
   };
 
+  this.destroyCity = function() {
+    this.numCities--;
+  };
+
 
 }
 
