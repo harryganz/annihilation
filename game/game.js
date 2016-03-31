@@ -18,11 +18,25 @@ function Game() {
     return this.players.find((pl) => pl.alias === alias);
   };
 
+  this.playerCanTakeAction = function(player, action) {
+    if(action == 'launch' && player.numNukes < 1) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   this.takeTurn = function(player1Action, player2Action) {
     // Get each player from the players array
-    var player1 = this.getPlayerByIndex(1);
-    var player2 = this.getPlayerByIndex(2);
+    var player1 = this.findPlayerByIndex(1);
+    var player2 = this.findPlayerByIndex(2);
+
+    // Make sure both players can take the actions
+    // if not, break out of function
+    if(!this.playerCanTakeAction(player1, player1Action) ||
+      !this.playerCanTakeAction(player2, player2Action)) {
+        return ;
+      }
 
     // Have them take their corresponding actions
     playerTakeAction(player1, player1Action);
@@ -31,19 +45,20 @@ function Game() {
     // If player 1 launched nukes
     // check to see if a city was destroyed
     if(player1Action === 'launch') {
-      checkLaunchEffect(player2, player2Action);
+      checkLaunchEffect(player1, player2, player2Action);
     }
 
     // If player 2 launched nukes
     // check to see if a city was destroyed
     if(player2Action === 'launch') {
-      checkLaunchEffect(player1, player1Action);
+      checkLaunchEffect(player2, player1, player1Action);
     }
 
     // Set the state of isOver
     if(player1.hasLost() || player2.hasLost()){
       this.isOver = true;
     }
+
   };
 
   // Has the player do the action in params
@@ -65,9 +80,9 @@ function Game() {
     }
   };
 
-  var checkLaunchEffect = function(otherPlayer, action) {
+  var checkLaunchEffect = function(player, otherPlayer, action) {
     // If otherPlayer didn't launch countermeasures,
-    // destroy one of player2's cities
+    // destroy player2's cities
     if(action !== 'deployCountermeasures') {
       otherPlayer.destroyCity();
     } else {
@@ -77,7 +92,7 @@ function Game() {
         otherPlayer.destroyCity();
       }
     }
-  };
+  }.bind(this);
 
 }
 

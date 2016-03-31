@@ -2,6 +2,7 @@
 
 const mocha = require('mocha');
 const should = require('should');
+const sinon = require('sinon');
 const Player = require('../game/player');
 const Game = require('../game/game');
 
@@ -86,6 +87,54 @@ describe('Game constructor', function(){
       p2 = new Player('player 2');
       game.addPlayer(p1);
       game.addPlayer(p2);
+    });
+
+    it('should call the stockpile function if player stockpiles', function(){
+      p1.stockpile = sinon.spy();
+      game.takeTurn('stockpile', 'launch');
+      p1.stockpile.calledOnce.should.be.true();
+    });
+
+    it('should call the launch function of player if player launches', function(){
+      p2.launch = sinon.spy();
+      game.takeTurn('stockpile', 'launch');
+      p2.launch.calledOnce.should.be.true();
+    });
+
+    it('should call the deployCountermeasures function of a player if' +
+    ' player deploys countermeasures', function(){
+      p1.deployCountermeasures = sinon.spy();
+      game.takeTurn('deployCountermeasures', 'launch');
+      p1.deployCountermeasures.calledOnce.should.be.true();
+    });
+
+    it('should destroy an undefended play, function(){
+
+    });
+  });
+
+  describe('playerCanTakeAction function', function(){
+    var p1;
+    var p2;
+    beforeEach(function() {
+      p1 = new Player('player 1');
+      p2 = new Player('player 2');
+      game.addPlayer(p1);
+      game.addPlayer(p2);
+    });
+
+    it('should return true if a player with nukes tries to launch', function(){
+      game.playerCanTakeAction(p1, 'launch').should.be.true();
+    });
+
+    it('should return false if a player without nukes tries to launch', function(){
+      p1.numNukes = 0;
+      game.playerCanTakeAction(p1, 'launch').should.be.false();
+    });
+
+    it('should return true if player without nukes tries to stockpile', function(){
+      p1.numNukes = 0;
+      game.playerCanTakeAction(p1, 'stockpile').should.be.true();
     });
   });
 
