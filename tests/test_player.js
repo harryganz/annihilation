@@ -27,14 +27,23 @@ describe('Player constructor', function(){
     player.countermeasureEffectiveness.should.be.exactly(1);
   });
 
+  it('should have a property hasUsedCountermeasures with value of false', function(){
+    player.hasUsedCountermeasures.should.be.false();
+  });
+
   describe('stockpile function', function(){
     beforeEach(function(){
       player.countermeasureEffectiveness = 0.5;
+      player.hasUsedCountermeasures = true;
       player.stockpile();
     });
 
     it('should add one nuke to numNukes', function(){
       player.numNukes.should.be.exactly(2);
+    });
+
+    it('should set hasUsedCountermeasures to false', function(){
+      player.hasUsedCountermeasures.should.be.false();
     });
 
     it('should set countermeasureEffectiveness to 1', function(){
@@ -45,11 +54,16 @@ describe('Player constructor', function(){
   describe('launch function', function(){
     beforeEach(function(){
       player.countermeasureEffectiveness = 0.125;
+      player.hasUsedCountermeasures = true;
       player.launch();
     });
 
     it('should set numNukes to 0', function(){
       player.numNukes.should.be.exactly(0);
+    });
+
+    it('should set hasUsedCountermeasures to false', function(){
+      player.hasUsedCountermeasures.should.be.false();
     });
 
     it('should set countermeasureEffectiveness to 1', function(){
@@ -59,12 +73,17 @@ describe('Player constructor', function(){
 
   describe('deployCountermeasures function', function(){
     beforeEach(function() {
+      player.hasUsedCountermeasures = false;
       player.countermeasureEffectiveness = 1;
       player.deployCountermeasures();
     });
 
+    it('should set hasUsedCountermeasures to true', function(){
+      player.hasUsedCountermeasures.should.be.true();
+    });
+
     it('should halve countermeasureEffectiveness', function(){
       player.countermeasureEffectiveness.should.be.exactly(0.5);
-    });
+    });  
   });
 });
