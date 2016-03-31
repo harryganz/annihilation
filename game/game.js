@@ -58,7 +58,7 @@ function Game(id) {
         if(this.players.every(el => el.hasLost())){
           this.winner = 'nobody';
         } else {
-          this.winner = this.players.find(el => !el.hasLost());
+          this.winner = this.players.find(el => !el.hasLost()).alias;
         }
       }
 
