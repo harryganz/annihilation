@@ -50,7 +50,8 @@ function Player(alias) {
       numCities: this.numCities,
       numNukes: this.numNukes,
       countermeasureEffectiveness: this.countermeasureEffectiveness,
-      hasUsedCountermeasures: this.hasUsedCountermeasures
+      hasUsedCountermeasures: this.hasUsedCountermeasures,
+      hasLost: this.hasLost()
     };
   };
 
