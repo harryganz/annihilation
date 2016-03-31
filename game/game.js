@@ -4,6 +4,7 @@ function Game(id) {
   this.id = id || '';
   this.isOver = false;
   this.players = [];
+  this.winner = '';
   this.random = Math.random(); // Allow stubbing of randgen
 
   this.addPlayer = function(newPlayer) {
@@ -15,7 +16,7 @@ function Game(id) {
     return this.players[index-1];
   };
 
-  this.findPlayersByAlias = function(alias) {
+  this.findPlayerByAlias = function(alias) {
     return this.players.find(el => el.alias === alias);
   };
 
@@ -27,12 +28,15 @@ function Game(id) {
     var player1Nukes = player1.numNukes;
     var player2Nukes = player2.numNukes;
 
-    // Each player takes an action
-    var player1ActionIsValid = player1[action1]();
-    var player2ActionIsValid = player2[action2]();
+    // Determine if players actions are valid
+    var player1ActionIsValid = (action1 !== 'launch' || player1Nukes > 0);
+    var player2ActionIsValid = (action2 !== 'launch' || player2Nukes > 0);
 
     // Determine the outcome of a turn
     if (player1ActionIsValid && player2ActionIsValid) {
+        // Each player takes an action
+        player1[action1]();
+        player2[action2]();
       // If player 1 launches nukes
       // And player 2 doesn't launch countermeasures or they are not effective,
       // player 2 loses as many cities as nukes were launched by player 1
@@ -48,6 +52,13 @@ function Game(id) {
       // If player 1 or 2 has lost set isOver to true
       if(player1.hasLost() || player2.hasLost()) {
         this.isOver = true;
+        // If all lost set winner to nobody
+        // else to the person who hasn't lost
+        if(this.players.all(el => el.hasLost())){
+          this.winner = 'nobody';
+        } else {
+          this.winner = this.players.find(el => !el.hasLost());
+        }
       }
 
       return true;
@@ -56,9 +67,18 @@ function Game(id) {
     }
   };
 
+  this.getState = function() {
+    return {
+      isOver: this.isOver,
+      winner: this.winner,
+      players: this.players.map(el => el.getState())
+    };
+  };
+
   var nukeLaunchIsEffective = function(player, action) {
     return (action !== ('deployCountermeasures' ||
     player.countermeasureEffectiveness < this.random));
   }.bind(this);
-
 }
+
+module.exports = Game;
