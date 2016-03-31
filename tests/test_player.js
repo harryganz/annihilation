@@ -33,21 +33,41 @@ describe('Player constructor', function(){
 
   describe('stockpile function', function(){
     beforeEach(function(){
+      player.countermeasureEffectiveness = 0.5;
+      player.hasUsedCountermeasures = true;
       player.stockpile();
     });
 
     it('should add one nuke to numNukes', function(){
       player.numNukes.should.be.exactly(2);
     });
+
+    it('should set hasUsedCountermeasures to false', function(){
+      player.hasUsedCountermeasures.should.be.false();
+    });
+
+    it('should set countermeasureEffectiveness to 1', function(){
+      player.countermeasureEffectiveness.should.be.exactly(1);
+    });
   });
 
   describe('launch function', function(){
     beforeEach(function(){
+      player.countermeasureEffectiveness = 0.125;
+      player.hasUsedCountermeasures = true;
       player.launch();
     });
 
     it('should set numNukes to 0', function(){
       player.numNukes.should.be.exactly(0);
+    });
+
+    it('should set hasUsedCountermeasures to false', function(){
+      player.hasUsedCountermeasures.should.be.false();
+    });
+
+    it('should set countermeasureEffectiveness to 1', function(){
+      player.countermeasureEffectiveness.should.be.exactly(1);
     });
   });
 });
