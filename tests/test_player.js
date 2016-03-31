@@ -38,6 +38,16 @@ describe('Player constructor', function(){
 
     it('should add one nuke to numNukes', function(){
       player.numNukes.should.be.exactly(2);
+    });
+  });
+
+  describe('launch function', function(){
+    beforeEach(function(){
+      player.launch();
+    });
+
+    it('should launch all a players nukes', function(){
+      player.numNukes.should.be.exactly(0);
     }); 
   });
 });
