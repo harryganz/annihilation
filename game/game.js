@@ -10,10 +10,19 @@ function Game() {
     this.players.push(newPlayer);
   };
 
+  this.findPlayerByIndex = function(num){
+    return this.players[num-1];
+  };
+
+  this.findPlayerByAlias = function(alias) {
+    return this.players.find((pl) => pl.alias === alias);
+  };
+
+
   this.takeTurn = function(player1Action, player2Action) {
     // Get each player from the players array
-    var player1 = this.players[0];
-    var player2 = this.players[1];
+    var player1 = this.getPlayerByIndex(1);
+    var player2 = this.getPlayerByIndex(2);
 
     // Have them take their corresponding actions
     playerTakeAction(player1, player1Action);
