@@ -30,4 +30,14 @@ describe('Player constructor', function(){
   it('should have a property hasUsedCountermeasures with value of false', function(){
     player.hasUsedCountermeasures.should.be.false();
   });
+
+  describe('stockpile function', function(){
+    beforeEach(function(){
+      player.stockpile();
+    });
+
+    it('should add one nuke to numNukes', function(){
+      player.numNukes.should.be.exactly(2);
+    }); 
+  });
 });
