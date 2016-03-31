@@ -9,7 +9,11 @@ function Player(alias) {
 
   this.stockpile = function() {
     this.numNukes++;
-  }
+  };
+
+  this.launch = function() {
+    this.numNukes = 0;
+  };
 }
 
 module.exports = Player;
