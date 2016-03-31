@@ -37,7 +37,7 @@ function Game(id) {
       // Each player takes an action
       player1[action1]();
       player2[action2]();
-      
+
       // If player 1 launches nukes
       // And player 2 doesn't launch countermeasures or they are not effective,
       // player 2 loses as many cities as nukes were launched by player 1
@@ -55,7 +55,7 @@ function Game(id) {
         this.isOver = true;
         // If all lost set winner to nobody
         // else to the person who hasn't lost
-        if(this.players.all(el => el.hasLost())){
+        if(this.players.every(el => el.hasLost())){
           this.winner = 'nobody';
         } else {
           this.winner = this.players.find(el => !el.hasLost());
@@ -77,8 +77,8 @@ function Game(id) {
   };
 
   var nukeLaunchIsEffective = function(player, action) {
-    return (action !== ('deployCountermeasures' ||
-    player.countermeasureEffectiveness < this.random));
+    return ((action !== 'deployCountermeasures') ||
+    player.countermeasureEffectiveness < this.random);
   }.bind(this);
 }
 
