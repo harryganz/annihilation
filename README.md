@@ -23,6 +23,7 @@ A user should be able to ...
   * Deploy countermeasures
   * Launch nukes
   * Stockpile nukes
+* shown an error message if they make an illegal action 
 * see a waiting screen if they have taken an action but their opponent has not
 * know when the opponent has taken their turn
 * see what action their opponent took the previous turn at the start of the subsequent turn
