@@ -30,5 +30,10 @@
     "readline-sync": "^1.4.1",
     "should": "^8.3.0",
     "sinon": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.5"
   }
 }
