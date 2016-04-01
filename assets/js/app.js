@@ -1,11 +1,14 @@
 import React from 'react';
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
+
+// Components
+import Home from './home';
 
 const App = React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="main">
         <header>
           <h1> Annihilation </h1>
         </header>
@@ -18,6 +21,7 @@ const App = React.createClass({
 render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
+    <IndexRoute component={Home} />
     </Route>
   </Router>,
   document.getElementById('container')
