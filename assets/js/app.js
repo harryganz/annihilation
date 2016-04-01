@@ -12,7 +12,10 @@ const App = React.createClass({
         <header>
           <h1> Annihilation </h1>
         </header>
-        {this.props.children}
+        <h3 className="bhead"> "Nuclear war without the fallout" </h3>
+        <div className="content">
+          {this.props.children}
+        </div>
       </div>
     );
   }

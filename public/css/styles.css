@@ -34,3 +34,17 @@ header h1 {
   text-align: center;
   font-style: italic;
 }
+
+/* Main Styles */
+#main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.content {
+  margin-top: 4em;
+  margin: 4em 4em 2em;
+}
+
+/* Home Page Styles */
