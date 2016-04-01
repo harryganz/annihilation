@@ -5,6 +5,7 @@ import {render} from 'react-dom';
 // Components
 import Home from './home';
 import Rules from './rules';
+import StartGame from './start-game';
 
 const App = React.createClass({
   render: function() {
@@ -27,6 +28,7 @@ render(
     <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="/rules" component={Rules} />
+    <Route path="/start" component={StartGame} />
     </Route>
   </Router>,
   document.getElementById('container')
