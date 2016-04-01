@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 const Home = React.createClass({
   render: function() {
@@ -8,7 +9,7 @@ const Home = React.createClass({
           <button className="btn btn-large btn-red"> Challenge A Friend </button>
           <button className="btn btn-large btn-gray"> Random Opponent </button>
         </div>
-        <button className="btn btn-green">Rules</button>
+        <button className="btn btn-green"><Link to="/rules">Rules</Link></button>
       </div>
     );
   }
