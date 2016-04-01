@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 
 // Components
 import Home from './home';
+import Rules from './rules';
 
 const App = React.createClass({
   render: function() {
@@ -25,6 +26,7 @@ render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
     <IndexRoute component={Home} />
+    <Route path="/rules" component={Rules} />
     </Route>
   </Router>,
   document.getElementById('container')
