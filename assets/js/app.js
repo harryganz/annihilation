@@ -6,8 +6,19 @@ import {render} from 'react-dom';
 import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
+import socket from './sockets';
 
 const App = React.createClass({
+  getInitialState: function() {
+    return {
+      game: {}
+    }
+  },
+  componentWillMount: function() {
+    socket.getGameState((data) => {
+      this.setState({game: data});
+    });
+  },
   render: function() {
     return (
       <div className="main">
