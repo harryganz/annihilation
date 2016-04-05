@@ -1,12 +1,13 @@
 import React from 'react';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
+import io from 'socket.io-client';
 
 // Components
 import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
-import socket from './sockets';
+import sockets from './sockets';
 
 const App = React.createClass({
   getInitialState: function() {
@@ -14,10 +15,13 @@ const App = React.createClass({
       game: {}
     }
   },
-  componentWillMount: function() {
-    socket.getGameState((data) => {
-      this.setState({game: data});
-    });
+  componentDidMount: function() {
+    var socket = io();
+    socket.on('game-state', this.setGameState);
+  },
+  setGameState: function(data){
+    this.setState({game: data});
+    console.log('game state set');
   },
   render: function() {
     return (
