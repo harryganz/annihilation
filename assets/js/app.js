@@ -18,15 +18,17 @@ const App = React.createClass({
     }
   },
   componentDidMount: function() {
-    sockets.getGameState(this.setGameState);
+    sockets.connect();
+    sockets.newGame(this.createGame);
     sockets.startGame(this.startGame);
   },
-  setGameState: function(data){
+  startGame: function(data) {
     this.setState({game: data});
-    console.log('game state set');
-  },
-  startGame: function() {
     console.log('game started');
+  },
+  createGame: function(data) {
+    this.setState({game: data});
+    console.log('game created');
   },
   render: function() {
     return (

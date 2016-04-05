@@ -2,13 +2,16 @@
 
 function Game(id) {
   this.id = id || '';
+  this.numPlayers = 0;
   this.isOver = false;
   this.players = [];
   this.winner = '';
   this.random = Math.random(); // Allow stubbing of randgen
 
   this.addPlayer = function(newPlayer) {
+    var result = false;
     this.players.push(newPlayer);
+    this.numPlayers++;
     return true;
   };
 
@@ -70,6 +73,7 @@ function Game(id) {
 
   this.getState = function() {
     return {
+      id: this.id,
       isOver: this.isOver,
       winner: this.winner,
       players: this.players.map(el => el.getState())
