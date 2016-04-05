@@ -1,21 +1,24 @@
 import React from 'react';
-import io from 'socket.io-client';
+import sockets from './sockets';
 
 
 const StartGame = React.createClass({
-  addPlayer: function() {
+  addPlayerHandler: function(event) {
+    event.preventDefault();
+    var playerForm = this.refs.playerForm;
     var newPlayer = this.refs.alias.value;
-    var socket = io();
-    socket.emit('new-player', {alias: newPlayer});
-    console.log('new player event emmitted');
+    sockets.addPlayer(newPlayer);
+    playerForm.reset();
   },
   render: function() {
     return(
       <div className="start-game">
         <div className="panel">
-          <p>Please enter an alias</p>
-          <input type="text" ref="alias" placeholder="Enter name here ..."/>
-          <button onClick={this.addPlayer} className="btn btn-green btn-large">OK</button>
+          <form onSubmit={this.addPlayerHandler} ref="playerForm">
+            <label htmlFor="alias">Please Enter An Alias</label>
+            <input type="text" name="alias" ref="alias" placeholder="Enter name here ..."/>
+            <button type="submit" className="btn btn-green btn-large">OK</button>
+          </form>
         </div>
       </div>
     );

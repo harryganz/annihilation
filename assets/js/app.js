@@ -1,12 +1,14 @@
+// 3rd party modules
 import React from 'react';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
-import io from 'socket.io-client';
 
 // Components
 import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
+
+// Helpers
 import sockets from './sockets';
 
 const App = React.createClass({
@@ -16,8 +18,7 @@ const App = React.createClass({
     }
   },
   componentDidMount: function() {
-    var socket = io();
-    socket.on('game-state', this.setGameState);
+    sockets.getGameState(this.setGameState);
   },
   setGameState: function(data){
     this.setState({game: data});
