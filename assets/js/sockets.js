@@ -11,14 +11,9 @@ module.exports = {
     this.socket.emit('new-player', {alias: player});
   },
   newGame: function(cb) {
-    this.socket.on('new-game', (data) => {
-      cb(data);
-    });
+    this.socket.on('new-game', cb);
   },
   startGame: function(cb) {
-    this.socket.on('start-game', (data) => {
-      console.log('start game hit');
-      cb(data);
-    });
+    this.socket.on('start-game', cb);
   }
 };

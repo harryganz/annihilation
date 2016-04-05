@@ -9,27 +9,22 @@ io.on('connection', (socket) => {
     console.log('new player received');
     // Create a new player with the provided alias
     var newPlayer = new Player(data.alias);
-    // If no games or lastGame full create a new game, add player,
-    // and emit new-game with game data
-    // else add player and emit start-game with game data
+
     var lastGame = gamesArray[gamesArray.length - 1];
     if(gamesArray.length === 0 || lastGame.numPlayers === 2){
+      // If no games or lastGame full create a new game, add player,
+      // have socket join room corresponding to the new game
+      // and emit new-game with game data
       lastGame = new Game(gamesArray.length+1);
       gamesArray.push(lastGame);
-      console.log('new game created');
-      lastGame.addPlayer(newPlayer);
-      socket.join(lastGame.id, (err) => {
-        if(err) throw err;
-        console.log('socket joined room');
-      });
-      socket.emit('new-game', lastGame.getState());
-      console.log('first player added');
-    } else {
       lastGame.addPlayer(newPlayer);
       socket.join(lastGame.id);
-      console.log('socket rooms', socket.rooms);
-      socket.to(lastGame.id).emit('start-game', lastGame.getState());
-      console.log('second player added');
+      socket.emit('new-game', lastGame.getState());
+    } else {
+      // else add player to last game, join room, and emit start-game with game data
+      lastGame.addPlayer(newPlayer);
+      socket.join(lastGame.id);
+      io.to(lastGame.id).emit('start-game', lastGame.getState());
     }
   });
 });
