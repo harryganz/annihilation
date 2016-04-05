@@ -6,7 +6,6 @@ var gamesArray = [];
 
 io.on('connection', (socket) => {
   socket.on('new-player', (data) => {
-    console.log('new player received');
     // Create a new player with the provided alias
     var newPlayer = new Player(data.alias);
 
