@@ -1,3 +1,4 @@
+// 3rd party modules
 import React from 'react';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
@@ -7,7 +8,26 @@ import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
 
+// Helpers
+import sockets from './sockets';
+
 const App = React.createClass({
+  getInitialState: function() {
+    return {
+      game: {}
+    }
+  },
+  componentDidMount: function() {
+    sockets.getGameState(this.setGameState);
+    sockets.startGame(this.startGame);
+  },
+  setGameState: function(data){
+    this.setState({game: data});
+    console.log('game state set');
+  },
+  startGame: function() {
+    console.log('game started');
+  },
   render: function() {
     return (
       <div className="main">

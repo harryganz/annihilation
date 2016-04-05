@@ -1,13 +1,24 @@
 import React from 'react';
+import sockets from './sockets';
+
 
 const StartGame = React.createClass({
+  addPlayerHandler: function(event) {
+    event.preventDefault();
+    var playerForm = this.refs.playerForm;
+    var newPlayer = this.refs.alias.value;
+    sockets.addPlayer(newPlayer);
+    playerForm.reset();
+  },
   render: function() {
     return(
       <div className="start-game">
         <div className="panel">
-          <p>Please enter an alias</p>
-          <input type="text" placeholder="Enter name here ..."/>
-          <button className="btn btn-green btn-large">OK</button>
+          <form onSubmit={this.addPlayerHandler} ref="playerForm">
+            <label htmlFor="alias">Please Enter An Alias</label>
+            <input type="text" name="alias" ref="alias" placeholder="Enter name here ..."/>
+            <button type="submit" className="btn btn-green btn-large">OK</button>
+          </form>
         </div>
       </div>
     );
