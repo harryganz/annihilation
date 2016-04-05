@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Waiting from './waiting';
+import UserPanel from './user-panel';
 
 const GameScreen = React.createClass({
   contextTypes: {
@@ -10,10 +11,9 @@ const GameScreen = React.createClass({
   render: function() {
     return (
       <div className="game-screen">
-        <div className="panel">
-          <h1> Yarr, here be the game screen </h1>
-        </div>
-        {this.context.waiting ? <Waiting /> : ''} 
+          <UserPanel game={this.context.game} id={0} key={0} />
+          <UserPanel game={this.context.game} id={1} key={1} />
+          {this.context.waiting ? <Waiting /> : ''}
       </div>
     );
   }
