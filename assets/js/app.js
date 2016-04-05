@@ -24,11 +24,9 @@ const App = React.createClass({
   },
   startGame: function(data) {
     this.setState({game: data});
-    console.log('game started');
   },
   createGame: function(data) {
     this.setState({game: data});
-    console.log('game created');
   },
   render: function() {
     return (
