@@ -2,16 +2,17 @@ import io from 'socket.io-client';
 
 var socket;
 module.exports = {
-  getGameState: function(cb){
-    socket = io();
-    socket.on('game-state', cb);
+  socket: {},
+  connect: function() {
+    this.socket = io();
   },
-  addPlayer: function(alias){
-    socket = io();
-    socket.emit('new-player', {alias: alias});
+  addPlayer: function(player) {
+    this.socket.emit('new-player', {alias: player});
   },
-  startGame: function(cb){
-    socket = io();
-    socket.on('start-game', cb);
+  newGame: function(cb) {
+    this.socket.on('new-game', cb);
+  },
+  startGame: function(cb) {
+    this.socket.on('start-game', cb);
   }
 };

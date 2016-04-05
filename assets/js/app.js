@@ -7,6 +7,7 @@ import {render} from 'react-dom';
 import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
+import GameScreen from './gamescreen';
 
 // Helpers
 import sockets from './sockets';
@@ -14,19 +15,35 @@ import sockets from './sockets';
 const App = React.createClass({
   getInitialState: function() {
     return {
-      game: {}
+      game: {},
+      waiting: false
     }
   },
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+  childContextTypes: {
+    game: React.PropTypes.object,
+    waiting: React.PropTypes.bool
+  },
+  getChildContext: function() {
+    return {
+      game: this.state.game,
+      waiting: this.state.waiting
+    };
+  },
   componentDidMount: function() {
-    sockets.getGameState(this.setGameState);
+    sockets.connect();
+    sockets.newGame(this.createGame);
     sockets.startGame(this.startGame);
   },
-  setGameState: function(data){
-    this.setState({game: data});
-    console.log('game state set');
+  startGame: function(data) {
+    this.setState({game: data, waiting: false});
+    this.context.router.replace('/game');
   },
-  startGame: function() {
-    console.log('game started');
+  createGame: function(data) {
+    this.setState({game: data, waiting: true});
+    this.context.router.replace('/game');
   },
   render: function() {
     return (
@@ -46,9 +63,10 @@ const App = React.createClass({
 render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="/rules" component={Rules} />
-    <Route path="/start" component={StartGame} />
+      <IndexRoute component={Home} />
+      <Route path="/rules" component={Rules} />
+      <Route path="/start" component={StartGame} />
+      <Route path="/game" component={GameScreen} />
     </Route>
   </Router>,
   document.getElementById('container')
