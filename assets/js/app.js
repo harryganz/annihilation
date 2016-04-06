@@ -16,7 +16,8 @@ const App = React.createClass({
   getInitialState: function() {
     return {
       game: {},
-      waiting: false
+      waiting: false,
+      alias: ''
     }
   },
   contextTypes: {
@@ -24,12 +25,16 @@ const App = React.createClass({
   },
   childContextTypes: {
     game: React.PropTypes.object,
-    waiting: React.PropTypes.bool
+    waiting: React.PropTypes.bool,
+    alias: React.PropTypes.string,
+    setAlias: React.PropTypes.func
   },
   getChildContext: function() {
     return {
       game: this.state.game,
-      waiting: this.state.waiting
+      waiting: this.state.waiting,
+      alias: this.state.alias,
+      setAlias: this.setAlias
     };
   },
   componentDidMount: function() {
@@ -44,6 +49,9 @@ const App = React.createClass({
   createGame: function(data) {
     this.setState({game: data, waiting: true});
     this.context.router.replace('/game');
+  },
+  setAlias: function(alias) {
+    this.setState({alias: alias});
   },
   render: function() {
     return (

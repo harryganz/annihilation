@@ -3,11 +3,15 @@ import sockets from './sockets';
 
 
 const StartGame = React.createClass({
+  contextTypes: {
+    setAlias: React.PropTypes.func
+  },
   addPlayerHandler: function(event) {
     event.preventDefault();
     var playerForm = this.refs.playerForm;
     var newPlayer = this.refs.alias.value;
     sockets.addPlayer(newPlayer);
+    this.context.setAlias(newPlayer);
     playerForm.reset();
   },
   render: function() {
