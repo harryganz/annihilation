@@ -18,12 +18,35 @@ io.on('connection', (socket) => {
       gamesArray.push(lastGame);
       lastGame.addPlayer(newPlayer);
       socket.join(lastGame.id);
+      socket.game_id = lastGame.id;
       socket.emit('new-game', lastGame.getState());
     } else {
       // else add player to last game, join room, and emit start-game with game data
       lastGame.addPlayer(newPlayer);
       socket.join(lastGame.id);
+      socket.game_id = lastGame.id;
       io.to(lastGame.id).emit('start-game', lastGame.getState());
+    }
+  });
+
+  socket.on('take-turn', (data) => {
+    var game = gamesArray.find(el => socket.game_id);
+    var success = game.takeTurn(data.alias, data.action);
+    if(success) {
+      if(game.isOver) {
+        // Emit game over to room
+        io.to(socket.game_id).emit('game-over', game.getState());
+        // Remove game from active games
+        games.splice(games.findIndex(el => el === game),1);
+      } else {
+        if(game.turnNumber % 2 === 0) {
+          io.to(socket.game_id).emit('next-turn', game.getState());
+        } else {
+          socket.emit('waiting', {});
+        }
+      }
+    } else {
+      socket.emit('invalid-action', {message: 'Invalid action. Try again'});
     }
   });
 });
