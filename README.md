@@ -13,7 +13,6 @@ Challenge your friends to a game of nuclear annihilation. Stockpile nukes, launc
 A user should be able to ...
 * see the game rules
 * challenge a random opponent to a game
-* invite a friend to play against them
 * enter an alias
 * start a game
 * not be able to join a game if there are already two players
@@ -23,7 +22,7 @@ A user should be able to ...
   * Deploy countermeasures
   * Launch nukes
   * Stockpile nukes
-* shown an error message if they make an illegal action 
+* shown an error message if they make an illegal action
 * see a waiting screen if they have taken an action but their opponent has not
 * know when the opponent has taken their turn
 * see what action their opponent took the previous turn at the start of the subsequent turn
@@ -33,9 +32,11 @@ A user should be able to ...
 * see how many cities each player has currently
 * see a message when the game is over indicating who won
 * start a new game when the game ends
-* be able to login through facebook
-* be able to post a link to a game on a friend's wall
+
+**Features not likely to be implemented**
+* be able to post a link to a game on a friend's facebook wall
 * be able to play against a computer
+* invite a friend to play against them
 
 ## Wireframes
 ![Start Game](wireframes/annihilation_start_game_mobile.png)
@@ -52,6 +53,15 @@ A user should be able to ...
 
 ![Game Over](wireframes/annihilation_gameover_mobile.png)
 
-## ERD
+## Planned Features
 
-![ERD](erd/annihilation_erd.png)
+### Version 1.0
+
+* User can challenge a random opponent
+* Basic gameplay in which user can launch nukes, launch countermeasures, or stockpile nukes
+
+
+## Version 2.0
+
+* User can share a link to challenge a friend
+* Share link to game via facebook
