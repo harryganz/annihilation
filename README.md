@@ -61,7 +61,7 @@ A user should be able to ...
 * Basic gameplay in which user can launch nukes, launch countermeasures, or stockpile nukes
 
 
-## Version 2.0
+### Version 2.0
 
 * User can share a link to challenge a friend
 * Share link to game via facebook
