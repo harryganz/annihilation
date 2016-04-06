@@ -26,6 +26,24 @@ io.on('connection', (socket) => {
       io.to(lastGame.id).emit('start-game', lastGame.getState());
     }
   });
+
+  socket.on('take-turn', (data) => {
+    var game = gamesArray.find(el => el.is === data.id);
+    var success = game.takeTurn(data.alias, data.action);
+    if(success) {
+      if(game.isOver) {
+        socket.emit('game-over', game.getState());
+      } else {
+        if(game.turnNumber % 2 === 0) {
+          socket.emit('next-turn', game.getState());
+        } else {
+          socket.emit('waiting', {});
+        }
+      }
+    } else {
+      socket.emit('invalid-action', {message: 'Invalid action. Try again'});
+    }
+  });
 });
 
 module.exports = io;
