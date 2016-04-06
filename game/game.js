@@ -6,7 +6,7 @@ function Game(id) {
   this.isOver = false;
   this.players = [];
   this.winner = '';
-  this.random = Math.random(); // Allow stubbing of randgen
+  this.random = Math.random; // Allow stubbing of randgen
   this.turnNumber = 0;
   this.turnMessages = [];
 
@@ -89,8 +89,10 @@ function Game(id) {
   };
 
   var nukeLaunchIsEffective = function(player) {
+    var random = this.random();
+    console.log('random number ', random);
     return ((player.lastAction !== 'deployCountermeasures') ||
-    player.countermeasureEffectiveness < this.random);
+    player.countermeasureEffectiveness*2 < random);
   }.bind(this);
 
   var actionMessage = function(player) {
