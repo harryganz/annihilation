@@ -4,34 +4,36 @@ function Player(alias) {
   this.alias = alias || '';
   this.numCities = 10;
   this.numNukes = 1;
+  this.nukesLaunched = 0;
   this.countermeasureEffectiveness = 1;
   this.hasUsedCountermeasures = false;
+  this.lastAction = ''; // Store the action for the last turn
 
   this.stockpile = function() {
     this.numNukes++;
     this.countermeasureEffectiveness = 1;
     this.hasUsedCountermeasures = false;
+    this.lastAction = 'stockpile';
+
 
     return true;
   };
 
   this.launch = function() {
-    var result;
-    if(this.numNukes > 0){
-      this.numNukes = 0;
-      this.countermeasureEffectiveness = 1;
-      this.hasUsedCountermeasures = false;
-      result = true;
-    } else {
-      result = false;
-    }
+    this.nukesLaunched = this.numNukes;
+    this.numNukes = 0;
+    this.countermeasureEffectiveness = 1;
+    this.hasUsedCountermeasures = false;
+    this.lastAction = 'launch';
 
-    return result;
+    return true;
   };
 
   this.deployCountermeasures = function() {
     this.hasUsedCountermeasures = true;
     this.countermeasureEffectiveness *= 0.5;
+    this.lastAction = 'deployCountermeasures';
+
     return true;
   };
 
