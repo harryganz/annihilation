@@ -9,6 +9,7 @@ import Rules from './rules';
 import StartGame from './start-game';
 import GameScreen from './gamescreen';
 import InfoScreen from './infoscreen';
+import Error from './error';
 
 // Helpers
 import sockets from './sockets';
@@ -61,8 +62,10 @@ const App = React.createClass({
     this.setState({waiting: true});
   },
   invalidAction: function(data) {
-    this.setState({error: data});
-    console.log('error detected');
+    this.setState({error: data.message});
+    window.setTimeout(() => {
+      this.setState({error: ''});
+    }, 3000);
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
@@ -83,6 +86,7 @@ const App = React.createClass({
         </header>
         <h3 className="bhead"> "Nuclear war without the fallout" </h3>
         <div className="content">
+          {this.state.error ? <Error error={this.state.error} /> : ''}
           {this.state.showInfo ? <InfoScreen game={this.state.game} /> : '' }
           {this.props.children}
         </div>

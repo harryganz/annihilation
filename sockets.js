@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
         }
       }
     } else {
-      socket.emit('invalid-action', {message: 'Invalid action. Try again'});
+      socket.emit('invalid-action', {message: 'Must stockpile nukes before launching'});
     }
   });
 });
