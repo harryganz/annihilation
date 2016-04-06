@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Waiting from './waiting';
+import Buttons from './buttons';
 import UserPanel from './user-panel';
 
 const GameScreen = React.createClass({
@@ -13,7 +14,7 @@ const GameScreen = React.createClass({
       <div className="game-screen">
           <UserPanel game={this.context.game} id={0} key={0} />
           <UserPanel game={this.context.game} id={1} key={1} />
-          {this.context.waiting ? <Waiting /> : ''}
+          {this.context.waiting ? <Waiting /> : <Buttons />}
       </div>
     );
   }

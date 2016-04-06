@@ -6,10 +6,9 @@ const Home = React.createClass({
     return (
       <div className="home">
         <div className="panel">
-          <button className="btn btn-large btn-red"> Challenge A Friend </button>
-          <button className="btn btn-large btn-gray"><Link to="/start">Random Opponent</Link></button>
+          <Link to="/start" className="btn btn-large btn-gray">Random Opponent</Link>
         </div>
-        <button className="btn btn-green"><Link to="/rules">Rules</Link></button>
+        <Link to="/rules" className="btn btn-green">Rules</Link>
       </div>
     );
   }

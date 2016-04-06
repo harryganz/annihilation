@@ -44,11 +44,11 @@ const App = React.createClass({
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
-    this.context.router.replace('/game');
+    this.context.router.push('/game');
   },
   createGame: function(data) {
     this.setState({game: data, waiting: true});
-    this.context.router.replace('/game');
+    this.context.router.push('/game');
   },
   setAlias: function(alias) {
     this.setState({alias: alias});
