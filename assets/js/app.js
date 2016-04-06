@@ -8,6 +8,7 @@ import Home from './home';
 import Rules from './rules';
 import StartGame from './start-game';
 import GameScreen from './gamescreen';
+import InfoScreen from './infoscreen';
 
 // Helpers
 import sockets from './sockets';
@@ -18,7 +19,8 @@ const App = React.createClass({
       game: {},
       waiting: false,
       alias: '',
-      error: ''
+      error: '',
+      showInfo: false
     }
   },
   contextTypes: {
@@ -52,7 +54,8 @@ const App = React.createClass({
     console.log('game is over');
   },
   nextTurn: function(data) {
-    this.setState({waiting: false, game: data});
+    this.setState({waiting: false, game: data, showInfo: true});
+    window.setTimeout(() => {this.setState({showInfo: false})}, 3000);
   },
   waiting: function() {
     this.setState({waiting: true});
@@ -80,6 +83,7 @@ const App = React.createClass({
         </header>
         <h3 className="bhead"> "Nuclear war without the fallout" </h3>
         <div className="content">
+          {this.state.showInfo ? <InfoScreen game={this.state.game} /> : '' }
           {this.props.children}
         </div>
       </div>
