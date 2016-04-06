@@ -10,7 +10,7 @@ const StartGame = React.createClass({
     event.preventDefault();
     var playerForm = this.refs.playerForm;
     var newPlayer = this.refs.alias.value;
-    // this.context.setAlias(newPlayer)
+    this.context.setAlias(newPlayer)
     sockets.addPlayer(newPlayer);
     playerForm.reset();
   },

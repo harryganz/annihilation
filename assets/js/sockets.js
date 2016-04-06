@@ -15,7 +15,7 @@ module.exports = {
   startGame: function(cb) {
     this.socket.on('start-game', cb);
   },
-  takeTurn: function(alias, game, action) {
+  takeTurn: function(alias, action) {
     this.socket.emit('take-turn', {alias: alias, action: action});
   },
   gameOver: function(cb) {

@@ -47,6 +47,10 @@ const App = React.createClass({
     sockets.waiting(this.waiting);
     sockets.invalidAction(this.invalidAction);
   },
+  gameOver: function(data) {
+    this.setState({waiting: true, game: data});
+    console.log('game is over');
+  },
   nextTurn: function(data) {
     this.setState({waiting: false, game: data});
   },
