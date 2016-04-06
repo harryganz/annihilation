@@ -17,7 +17,8 @@ const App = React.createClass({
     return {
       game: {},
       waiting: false,
-      alias: ''
+      alias: '',
+      error: ''
     }
   },
   contextTypes: {
@@ -41,6 +42,20 @@ const App = React.createClass({
     sockets.connect();
     sockets.newGame(this.createGame);
     sockets.startGame(this.startGame);
+    sockets.gameOver(this.gameOver);
+    sockets.nextTurn(this.nextTurn);
+    sockets.waiting(this.waiting);
+    sockets.invalidAction(this.invalidAction);
+  },
+  nextTurn: function(data) {
+    this.setState({waiting: false, game: data});
+  },
+  waiting: function() {
+    this.setState({waiting: true});
+  },
+  invalidAction: function(data) {
+    this.setState({error: data});
+    console.log('error detected');
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
