@@ -16,8 +16,9 @@ var actions = ['launch', 'stockpile', 'deployCountermeasures'];
 
 while(!game.isOver) {
   var in1 = rl.keyInSelect(actions, `${player1.alias} please choose an action`);
+  game.takeTurn(name1, actions[in1]);
   var in2 = rl.keyInSelect(actions, `${player2.alias} please choose an action`);
-  game.takeTurn(actions[in1], actions[in2]);
+  game.takeTurn(name2, actions[in2]);
 
-  console.log(game.getState());
+  console.log(game.turnMessages.join('\n'));
 }
