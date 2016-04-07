@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
         // Emit game over to room
         io.to(socket.game_id).emit('game-over', game.getState());
         // Remove game from active games
-        games.splice(games.findIndex(el => el === game),1);
+        gamesArray.splice(gamesArray.findIndex(el => el === game),1);
       } else {
         if(game.turnNumber % 2 === 0) {
           io.to(socket.game_id).emit('next-turn', game.getState());

@@ -4,7 +4,7 @@ var socket;
 module.exports = {
   socket: {},
   connect: function() {
-    this.socket = io();
+    this.socket = io.connect({forceNew: true});
   },
   addPlayer: function(player) {
     this.socket.emit('new-player', {alias: player});
