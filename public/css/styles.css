@@ -175,3 +175,12 @@ header h1 {
 .waiting, .button-group {
   text-align: center;
 }
+
+.user-panel > h3 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.user-panel > .panel {
+  line-height: 1.5em;
+}
