@@ -18,9 +18,15 @@ const GameOver = React.createClass({
     return (
       <div className="game-over">
         <div className="panel">
-          {message}
-          <h3>{winner} is the winner!</h3>
-          <button className="btn btn-green btn-large" onClick={this.playAgainHandler}>Play Again</button>
+          <div className="section">
+            <h3> Last Turn </h3>
+            {message}
+          </div>
+          <div className="section">
+            <h1>{winner} is the winner!</h1>
+          </div>
+
+            <button className="btn btn-green btn-large" onClick={this.playAgainHandler}>Play Again</button>
         </div>
       </div>
     );
