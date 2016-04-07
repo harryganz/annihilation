@@ -89,10 +89,8 @@ function Game(id) {
   };
 
   var nukeLaunchIsEffective = function(player) {
-    var random = this.random();
-    console.log('random number ', random);
     return ((player.lastAction !== 'deployCountermeasures') ||
-    player.countermeasureEffectiveness*2 < random);
+    player.countermeasureEffectiveness*2 < this.random());
   }.bind(this);
 
   var actionMessage = function(player) {
