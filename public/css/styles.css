@@ -52,5 +52,60 @@ header h1 {
   margin-top: 4em;
   margin: 4em 4em 2em;
 }
+/* Shared Styles */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-color: inherit;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+}
 
+.btn-green {
+  color: #000;
+  background: linear-gradient(#0f0, #090);
+  border: 2px solid #090;
+}
+
+.btn-very-large {
+  font-size: 4rem;
+  padding: 1.5rem 3rem;
+  border-radius: 2rem;
+}
+
+.btn-large {
+  font-size: 2rem;
+}
+
+
+.btn-red {
+  color: #fff;
+  background: linear-gradient(#f00, #900);
+  border: 2px solid #900;
+}
+
+.panel {
+  padding: 3rem 2rem;
+  background-color: rgba(0,0,0,0.7);
+  border: 2px solid #ddd;
+  border-radius: 2rem;
+}
 /* Home Page Styles */
+.home-panel .panel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.home-panel {
+  text-align: center;
+  max-width: 602px;
+  margin: 0 auto;
+  min-width: 20rem;
+}
+
+.home-panel .rules-btn {
+  float: right;
+}
+
+.rules-btn {
+  margin-top: 2rem;
+}
