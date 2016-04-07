@@ -2,6 +2,7 @@
 import React from 'react';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
+import $ from 'jquery';
 
 // Components
 import Home from './home';
@@ -63,16 +64,18 @@ const App = React.createClass({
   },
   nextTurn: function(data) {
     this.setState({waiting: false, game: data, showInfo: true});
-    window.setTimeout(() => {this.setState({showInfo: false})}, 3000);
+    $('.info-screen').show().hide(3000, () => {
+      this.setState({showInfo: false});
+    });
   },
   waiting: function() {
     this.setState({waiting: true});
   },
   invalidAction: function(data) {
     this.setState({error: data.message});
-    window.setTimeout(() => {
+    $('.error').show().hide(3000, () => {
       this.setState({error: ''});
-    }, 3000);
+    });
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
