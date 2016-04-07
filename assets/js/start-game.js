@@ -17,11 +17,17 @@ const StartGame = React.createClass({
   render: function() {
     return(
       <div className="start-game">
-        <div className="panel">
+        <div className="panel text-center">
           <form onSubmit={this.addPlayerHandler} ref="playerForm">
-            <label htmlFor="alias">Please Enter An Alias</label>
-            <input type="text" name="alias" ref="alias" placeholder="Enter name here ..."/>
-            <button type="submit" className="btn btn-green btn-large">OK</button>
+            <div className="form-group">
+              <label htmlFor="alias">Please Enter An Alias</label>
+            </div>
+            <div className="form-group">
+              <input type="text" name="alias" ref="alias" placeholder="Enter name here ..."/>
+            </div>
+            <div className="form-group">
+              <button type="submit" className="btn btn-green btn-large">OK</button>
+            </div>
           </form>
         </div>
       </div>
