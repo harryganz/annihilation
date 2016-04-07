@@ -1,28 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Coda|Oswald);
+
 * {
   margin: 0;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 4em;
+  font-family: Coda, sans-serif;;
 }
 
 h3 {
   font-size: 1.5em;
+  font-family: Coda, sans-serif;
 }
 
 body {
+  font-family: Oswald, sans-serif;
   color: #fff;
   background-image: url('/img/world-map.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #000;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center 8em;
   height: 100%;
 }
 
 header {
   padding: 2em 0;
+  color: #0f0;
   margin-bottom: 1em;
 }
 
