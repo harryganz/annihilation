@@ -10,6 +10,7 @@ import StartGame from './start-game';
 import GameScreen from './gamescreen';
 import InfoScreen from './infoscreen';
 import Error from './error';
+import GameOver from './game-over';
 
 // Helpers
 import sockets from './sockets';
@@ -31,15 +32,21 @@ const App = React.createClass({
     game: React.PropTypes.object,
     waiting: React.PropTypes.bool,
     alias: React.PropTypes.string,
-    setAlias: React.PropTypes.func
+    setAlias: React.PropTypes.func,
+    resetState: React.PropTypes.func
   },
   getChildContext: function() {
     return {
       game: this.state.game,
       waiting: this.state.waiting,
       alias: this.state.alias,
-      setAlias: this.setAlias
+      setAlias: this.setAlias,
+      resetState: this.resetState
     };
+  },
+  resetState: function() {
+    this.setState(this.getInitialState());
+    this.componentDidMount(); // Reset socket
   },
   componentDidMount: function() {
     sockets.connect();
@@ -52,7 +59,7 @@ const App = React.createClass({
   },
   gameOver: function(data) {
     this.setState({waiting: true, game: data});
-    console.log('game is over');
+    this.context.router.push('/gameover');
   },
   nextTurn: function(data) {
     this.setState({waiting: false, game: data, showInfo: true});
@@ -102,6 +109,7 @@ render(
       <Route path="/rules" component={Rules} />
       <Route path="/start" component={StartGame} />
       <Route path="/game" component={GameScreen} />
+      <Route path="/gameover" component={GameOver} />
     </Route>
   </Router>,
   document.getElementById('container')
