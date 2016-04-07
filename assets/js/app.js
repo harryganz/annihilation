@@ -64,14 +64,18 @@ const App = React.createClass({
   },
   nextTurn: function(data) {
     this.setState({waiting: false, game: data, showInfo: true});
-    window.setTimeout(() => {this.setState({showInfo: false})}, 3000);
+    $('.info-screen').show().hide(3000, () => {
+      this.setState({showInfo: false});
+    });
   },
   waiting: function() {
     this.setState({waiting: true});
   },
   invalidAction: function(data) {
     this.setState({error: data.message});
-    $('.error').show().fadeOut(3000);
+    $('.error').show().hide(3000, () => {
+      this.setState({error: ''});
+    });
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
