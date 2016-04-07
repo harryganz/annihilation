@@ -2,6 +2,7 @@
 import React from 'react';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {render} from 'react-dom';
+import $ from 'jquery';
 
 // Components
 import Home from './home';
@@ -70,9 +71,7 @@ const App = React.createClass({
   },
   invalidAction: function(data) {
     this.setState({error: data.message});
-    window.setTimeout(() => {
-      this.setState({error: ''});
-    }, 3000);
+    $('.error').show().fadeOut(3000);
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
