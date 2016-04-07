@@ -157,3 +157,23 @@ header h1 {
   margin-bottom: 2rem;
   width: 100%;
 }
+
+/* Game Screen Styles */
+.game-screen {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.user-panels {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.button-group, .waiting {
+  text-align: center;
+  margin-top: 3rem;
+}

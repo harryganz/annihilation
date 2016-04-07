@@ -13,9 +13,11 @@ const GameScreen = React.createClass({
   render: function() {
     return (
       <div className="game-screen">
+        <div className="user-panels">
           <UserPanel game={this.context.game} id={0} key={0} />
           <UserPanel game={this.context.game} id={1} key={1} />
-          {this.context.waiting ? <Waiting /> : <Buttons alias={this.context.alias}/>}
+        </div>
+        {this.context.waiting ? <Waiting /> : <Buttons alias={this.context.alias}/>}
       </div>
     );
   }
