@@ -95,6 +95,13 @@ header h1 {
   text-align: center;
 }
 /* Home Page Styles */
+.home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+}
 .home-panel .panel {
   max-width: 600px;
   margin: 0 auto;
@@ -126,4 +133,27 @@ header h1 {
 
 .rules .btn {
   margin-top: 2rem;
+}
+
+/* Start Page */
+.start-game {
+  width: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.start-game  label {
+  font-size: 2em;
+}
+
+.start-game input {
+  padding: 1rem;
+  margin-left: -1rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+.form-group {
+  margin-bottom: 2rem;
+  width: 100%;
 }
