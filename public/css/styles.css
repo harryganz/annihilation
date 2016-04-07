@@ -61,12 +61,6 @@ header h1 {
   border-radius: 1rem;
 }
 
-.btn-green {
-  color: #000;
-  background: linear-gradient(#0f0, #090);
-  border: 2px solid #090;
-}
-
 .btn-very-large {
   font-size: 4rem;
   padding: 1.5rem 3rem;
@@ -77,11 +71,34 @@ header h1 {
   font-size: 2rem;
 }
 
+.btn-green {
+  color: #000;
+  background: linear-gradient(#0f0, #090);
+  border: 2px solid #090;
+}
+
+.btn-green:active {
+  background: linear-gradient(#090, #090);
+}
 
 .btn-red {
   color: #fff;
   background: linear-gradient(#f00, #900);
   border: 2px solid #900;
+}
+
+.btn-red:active {
+  background: linear-gradient(#900, #900);
+}
+
+.btn-blue {
+  color: #fff;
+  background: linear-gradient(#00f, #009);
+  border: 2px solid #009;
+}
+
+.btn-blue:active {
+  background: linear-gradient(#009, #009);
 }
 
 .panel {
@@ -156,4 +173,40 @@ header h1 {
 .form-group {
   margin-bottom: 2rem;
   width: 100%;
+}
+
+/* Game Screen Styles */
+.game-screen {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.user-panels {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.waiting, .button-group {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.waiting {
+  font-size: 2rem;
+}
+
+.user-panel > h3 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.user-panel > .panel {
+  line-height: 1.5em;
+}
+
+.button-group > * {
+  margin: 0 1rem;
 }
