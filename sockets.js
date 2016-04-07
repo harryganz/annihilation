@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('take-turn', (data) => {
-    var game = gamesArray.find(el => socket.game_id);
+    var game = gamesArray.find(el => el.id === socket.game_id);
     var success = game.takeTurn(data.alias, data.action);
     if(success) {
       if(game.isOver) {
