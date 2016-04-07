@@ -25,7 +25,9 @@ const Rules = React.createClass({
             by an opponent for one turn. Beware! Every consecutive turn this is used reduces its
             effectiveness by one turn.</li>
           </ul>
-          <Link to="/" className="btn btn-large btn-green">OK</Link>
+          <div className="text-center">
+            <Link to="/" className="btn btn-large btn-green">OK</Link>
+          </div>
         </div>
       </div>
     );

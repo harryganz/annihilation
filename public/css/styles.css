@@ -90,6 +90,10 @@ header h1 {
   border: 2px solid #ddd;
   border-radius: 2rem;
 }
+
+.text-center {
+  text-align: center;
+}
 /* Home Page Styles */
 .home-panel .panel {
   max-width: 600px;
@@ -107,5 +111,19 @@ header h1 {
 }
 
 .rules-btn {
+  margin-top: 2rem;
+}
+
+/* Rules Page */
+.rules {
+  font-size: 1.25em;
+  line-height: 2rem;
+}
+
+.rules p:first-child {
+  margin-bottom: 1em;
+}
+
+.rules .btn {
   margin-top: 2rem;
 }
