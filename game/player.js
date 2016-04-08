@@ -2,7 +2,7 @@
 
 function Player(alias) {
   this.alias = alias || '';
-  this.numCities = 1;
+  this.numCities = 3;
   this.numNukes = 1;
   this.nukesLaunched = 0;
   this.countermeasureEffectiveness = 1;
