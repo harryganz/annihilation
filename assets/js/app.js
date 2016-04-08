@@ -70,9 +70,7 @@ const App = React.createClass({
   },
   invalidAction: function(data) {
     this.setState({error: data.message});
-    $('.error').show().hide(3000, () => {
-      this.setState({error: ''});
-    });
+    $('.error').show();
   },
   startGame: function(data) {
     this.setState({game: data, waiting: false});
