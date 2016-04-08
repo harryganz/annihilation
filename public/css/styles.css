@@ -42,14 +42,8 @@ header h1 {
 }
 
 /* Main Styles */
-#main {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
 .content {
-  margin-top: 4em;
+  position: relative;
   margin: 4em 4em 2em;
 }
 /* Shared Styles */
@@ -172,11 +166,7 @@ header h1 {
 
 /* Game Screen Styles */
 .game-screen {
-  position: absolute;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: -1;
 }
 .user-panels {
   display: flex;
