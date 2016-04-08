@@ -182,6 +182,7 @@ header h1 {
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
+  z-index: -1;
 }
 .user-panels {
   display: flex;
@@ -238,4 +239,24 @@ header h1 {
 
 .game-over button {
   margin-top: 3rem;
+}
+
+/* Info Screen */
+.info-screen {
+  position: absolute;
+  width: 90%;
+  z-index: 1;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  text-align: center;
+}
+
+.info-screen p {
+  margin: 1rem 0;
+}
+
+.info-screen button {
+  margin-top: 2rem;
 }
