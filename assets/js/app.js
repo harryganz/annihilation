@@ -22,8 +22,7 @@ const App = React.createClass({
       game: {},
       waiting: false,
       alias: '',
-      error: '',
-      showInfo: false
+      error: ''
     }
   },
   contextTypes: {
@@ -63,10 +62,8 @@ const App = React.createClass({
     this.context.router.push('/gameover');
   },
   nextTurn: function(data) {
-    this.setState({waiting: false, game: data, showInfo: true});
-    $('.info-screen').show().hide(3000, () => {
-      this.setState({showInfo: false});
-    });
+    this.setState({waiting: false, game: data});
+    $('.info-screen').show();
   },
   waiting: function() {
     this.setState({waiting: true});
@@ -96,9 +93,9 @@ const App = React.createClass({
         </header>
         <h3 className="bhead"> "Nuclear war without the fallout" </h3>
         <div className="content">
-          {this.state.error ? <Error error={this.state.error} /> : ''}
-          {this.state.showInfo ? <InfoScreen game={this.state.game} /> : '' }
           {this.props.children}
+          {this.state.game.turnMessages ? <InfoScreen game={this.state.game} /> : '' }
+          {this.state.error ? <Error error={this.state.error} /> : ''}
         </div>
       </div>
     );
