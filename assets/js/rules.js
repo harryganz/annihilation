@@ -21,7 +21,7 @@ const Rules = React.createClass({
             opponent&#39;s cities.</li>
             <li><span className="lead">Stockpile Nukes:</span> Adds one nuke to the
             player&#39;s stockpile.</li>
-            <li><span className="lead">Deploy Countermeasures</span> Blocks all nukes launched
+            <li><span className="lead">Deploy Countermeasures:</span> Blocks all nukes launched
             by an opponent for one turn. Beware! Every consecutive turn this is used reduces its
             effectiveness by one turn.</li>
           </ul>
