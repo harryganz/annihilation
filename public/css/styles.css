@@ -153,10 +153,7 @@ header h1 {
 .start-game {
   width: 95%;
   max-width: 740px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
 }
 .start-game  label {
   font-size: 2em;
