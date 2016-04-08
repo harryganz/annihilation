@@ -11,6 +11,7 @@
     "esversion": 6
   },
   "scripts": {
+    "prestart": "npm run bundle-v",
     "start": "node server.js",
     "test": "mocha tests/**/*.js",
     "test-w": "mocha tests/**/*.js -w",
