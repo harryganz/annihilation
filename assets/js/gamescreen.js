@@ -6,9 +6,15 @@ import UserPanel from './user-panel';
 
 const GameScreen = React.createClass({
   contextTypes: {
+    router: React.PropTypes.object,
     waiting: React.PropTypes.bool,
     game: React.PropTypes.object,
     alias: React.PropTypes.string
+  },
+  componentWillMount: function() {
+    if(!this.context.game.id){
+      this.context.router.replace('/');
+    }
   },
   render: function() {
     return (

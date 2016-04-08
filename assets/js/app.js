@@ -19,7 +19,13 @@ import sockets from './sockets';
 const App = React.createClass({
   getInitialState: function() {
     return {
-      game: {},
+      game: {
+        id: null,
+        isOver: false,
+        winner: '',
+        players: [],
+        turnMessages: []
+      },
       waiting: false,
       alias: '',
       error: ''

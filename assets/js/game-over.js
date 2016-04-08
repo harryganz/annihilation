@@ -10,6 +10,11 @@ const GameOver = React.createClass({
     this.context.router.push('/');
     this.context.resetState();
   },
+  componentWillMount: function() {
+    if(!this.context.game.id) {
+      this.context.router.replace('/');
+    }
+  },
   render: function() {
     var message = this.context.game.turnMessages.map((el, index) =>
                   <p key={index}>{el}</p>);
