@@ -21,7 +21,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #000;
-  background-attachment: fixed;
   background-position: center 8em;
   height: 100%;
 }
