@@ -261,6 +261,26 @@ header h1 {
   margin: 0 1rem;
 }
 
+.countdown {
+  display: none;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90%;
+  padding: 2.5em 0;
+  margin: 0 auto;
+  vertical-align: text-center;
+  font-size: 5em;
+}
+
+@media screen and (max-width: 540px){
+  .countdown {
+    font-size: 3em;
+    padding: 1.5em 0;
+  }
+}
+
 /* Game over styles */
 .game-over {
   text-align: center;
