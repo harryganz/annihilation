@@ -16,13 +16,21 @@ const UserPanel = React.createClass({
       }
     }
 
+    var counterMeasureWidth = 100;
+    if(player) {
+      counterMeasureWidth = player.countermeasureEffectiveness * 100;
+    }
+
     return (
       <div className="user-panel">
         <h3>{player ? player.alias : 'NA'}</h3>
         <div className="panel">
-          <p>Cities left: {player ? cities : 'NA'}</p>
+          <p className="lead">Cities left: {player ? cities : 'NA'}</p>
           <p>Nukes Stockpiled: {player ? nukes : 'NA'}</p>
-          <p>Countermeasure Effectiveness: {player ? player.countermeasureEffectiveness : 'NA'}</p>
+          <p>Countermeasure Effectiveness:</p>
+          <div className="meter">
+            <span style={{width: counterMeasureWidth+"%"}}></span>
+          </div>
         </div>
       </div>
     );
