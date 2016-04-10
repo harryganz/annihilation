@@ -234,6 +234,22 @@ header h1 {
 
 .waiting {
   font-size: 2rem;
+  animation-name: flash;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes flash {
+  from {color: #fff;}
+  12.5% {color: #eee;}
+  25% {color: #ccc;}
+  37.5% {color: #aaa;}
+  50% {color: #888;}
+  62.5% {color: #666;}
+  75% {color: #444;}
+  87.5% {color: #222;}
+  to {color: #000;}
 }
 
 .user-panel > h3 {
