@@ -44,7 +44,7 @@ header h1 {
 /* Main Styles */
 .content {
   position: relative;
-  margin: 4em 4em 2em;
+  margin: 4em 0;
 }
 /* Shared Styles */
 .btn {
@@ -63,6 +63,13 @@ header h1 {
 
 .btn-large {
   font-size: 2rem;
+}
+
+/* Resize large buttons for mobile */
+@media screen and (max-width: 768px) {
+  .btn-large {
+    font-size: 1.5rem;
+  }
 }
 
 .btn-green {
@@ -193,6 +200,14 @@ header h1 {
   line-height: 1.5em;
 }
 
+.button-group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 602px;
+  margin: 2rem auto 0 auto;
+}
+
 .button-group > * {
   margin: 0 1rem;
 }
@@ -226,10 +241,9 @@ header h1 {
 .info-screen, .error {
   position: absolute;
   width: 90%;
-  z-index: 1;
-  margin: 0 auto;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: none;
   text-align: center;
 }
