@@ -9,6 +9,7 @@ const io = require(path.join(__dirname, 'sockets'));
 
 // App Wide Middlewares
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(morgan('dev'));
 
 // Attach the sockets
 io.attach(server);
