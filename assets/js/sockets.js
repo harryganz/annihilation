@@ -1,6 +1,5 @@
 import io from 'socket.io-client';
 
-var socket;
 module.exports = {
   socket: {},
   connect: function() {
