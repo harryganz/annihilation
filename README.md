@@ -8,6 +8,10 @@
 
 Challenge your friends to a game of nuclear annihilation. Stockpile nukes, launch them, or block nukes by launching countermeasures. The first to destroy all of their opponent's cities wins, but beware, mutual annihilation is a possibility.
 
+### Live Version 
+
+[http://annihilation.herokuapp.com](http://annihilation.herokuapp.com)
+
 ### User Stories
 
 A user should be able to ...
